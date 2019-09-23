@@ -223,5 +223,74 @@
     })
     
    
+    
+    #4.关键词删除黑名单上传--------
+    
+    kw_filter <- var_file('bl_kw_sel');
+    
+    data_kw <- reactive({
+      res <- readExcelDf(kw_filter())
+      return(res);
+    })
+    
+    observeEvent(input$bl_kw_preview,{
+      run_dataTable2('bl_kw_data_show',data = data_kw())
+    })
+    
+    #处理上传服务器逻辑；
+    
+    
+    var_brand_kw <- var_ListChoose1('kw_brand')
+    observeEvent(input$bl_kw_upload,{
+      #处理数据
+      
+      #处理日期
+      FDate <- as.character(Sys.Date());
+      data <- data_kw()
+      names(data) <-c('FIs'); 
+      
+      FIs <- data$FIs; 
+      
+      res <- data.frame(FKeyWord = FIs,
+                          FDate,
+                          FType='is',
+                          FBrand=   var_brand_kw(),stringsAsFactors = F);
+ 
+      #View(res);
+      str(res);
+      res <- res[!is.na(res$FKeyWord), ]
+      ncount <- nrow(res);
+      #暂时不处理ID-------
+      sql_kw <- "select FKeyWord,FDate,FType,FBrand from filter_kw";
+      data_new <-sql_select(conn_nsim,sql_kw);
+      if (nrow(data_new) == 0){
+        res$FId <- 1:ncount;
+        res <- res[,c('FId','FKeyWord','FDate','FType','FBrand')]
+        tsda::db_writeTable(conn=conn_nsim,table_name = 'filter_kw',r_object = res,append = T)
+        tsui::pop_notice(paste("上传了",ncount,"条记录!",sep=""))
+      } else{
+        data_diff <-tsdo::df_setdiff(res,data_new);
+        
+        if (nrow(data_diff) >0 ){
+          sql_max_id <- "select max(FId) as FId  from filter_kw"
+          max_id <- sql_select(conn_nsim,sql_max_id);
+          max_id <- max_id$FId[1];
+          data_diff$FId <-1:nrow(data_diff)+max_id;
+          data_diff <- data_diff[,c('FId','FKeyWord','FDate','FType','FBrand')];
+          tsda::db_writeTable(conn=conn_nsim,table_name = 'filter_kw',r_object = data_diff,append = T)
+          tsui::pop_notice(paste("上传了",nrow(data_diff),"条记录!",sep=""))
+        }else{
+          tsui::pop_notice(paste("上传了0条记录!",sep=""))
+        }
+        
+        
+        
+      }
+      
+      
+      
+      
+    })
+    
   
 })
