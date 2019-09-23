@@ -1,6 +1,12 @@
 # 设置app标题-----
 
-app_title <-'App Template';
+app_title <-'网商黑名单管理系统V1.0';
+
+conn_nsim <-sql_conn_common(db_name = 'nsim');
+brand_info <- sql_select(conn_nsim,'select FNumber,FName from brand
+                              order by FId asc');
+brand_number <- brand_info$FNumber;
+brand_name <- brand_info$FName;
 
 
 # 设置3条消息框------

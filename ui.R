@@ -18,7 +18,8 @@ shinyUI(dashboardPage(skin = "blue",
                     #ui.sideBar----
                     dashboardSidebar(
                     
-                       sidebarMenu
+                       sidebarMenu,
+                       tsui::use_pop()
                     ),
                     
                     #ui.body----
