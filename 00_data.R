@@ -1,6 +1,6 @@
 # 设置app标题-----
 
-app_title <-'网商黑名单管理系统V1.0';
+app_title <-'网商黑名单系统V1.0';
 
 conn_nsim <-sql_conn_common(db_name = 'nsim');
 brand_info <- sql_select(conn_nsim,'select FNumber,FName from brand
