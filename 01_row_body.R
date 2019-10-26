@@ -15,8 +15,8 @@ menu_row <- tabItem(tabName = "row",
                              ),
                              box(
                                title = "操作区域", width = NULL, solidHeader = TRUE, status = "primary",
-                               actionButton('bl_file_preview','预览内容'),
-                               actionButton('bl_file_upload','上传服务器')
+                               actionButton('nsbl_file_preview','预览内容'),
+                               actionButton('nsbl_file_upload','上传服务器')
                              )
                       ),
                       

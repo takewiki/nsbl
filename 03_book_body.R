@@ -15,8 +15,8 @@ menu_book <- tabItem(tabName = "book",
                               ),
                               box(
                                 title = "操作区域", width = NULL, solidHeader = TRUE, status = "primary",
-                                actionButton('bl_answ_preview','预览内容'),
-                                actionButton('bl_answ_upload','上传服务器')
+                                actionButton('nsbl_answ_preview','预览内容'),
+                                actionButton('nsbl_answ_upload','上传服务器')
                               )
                        ),
                        

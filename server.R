@@ -12,7 +12,7 @@
       return(res);
     })
     #1.1预览--------
-    observeEvent(input$bl_file_preview,{
+    observeEvent(input$nsbl_file_preview,{
       run_dataTable2('bl_file_data_show',data = data_file())
     })
     
@@ -21,7 +21,7 @@
     
     var_brand_file <- var_ListChoose1('file_brand')
     #1.2 上传服务器-------
-    observeEvent(input$bl_file_upload,{
+    observeEvent(input$nsbl_file_upload,{
       #处理数据
       
       #处理日期
@@ -86,8 +86,8 @@
       res <- readExcelDf(ques_filter())
       return(res);
     })
-    
-    observeEvent(input$bl_ques_preview,{
+    #2.1预览------
+    observeEvent(input$nsbl_ques_preview,{
       run_dataTable2('bl_ques_data_show',data = data_ques())
     })
     
@@ -95,7 +95,8 @@
     
     
     var_brand_ques <- var_ListChoose1('ques_brand')
-    observeEvent(input$bl_ques_upload,{
+    #2.2文件级服务器上传------
+    observeEvent(input$nsbl_ques_upload,{
       #处理数据
       
       #处理日期
@@ -159,8 +160,8 @@
       res <- readExcelDf(answ_filter())
       return(res);
     })
-    
-    observeEvent(input$bl_answ_preview,{
+    #3.1预览------
+    observeEvent(input$nsbl_answ_preview,{
       run_dataTable2('bl_answ_data_show',data = data_answ())
     })
     
@@ -168,7 +169,8 @@
     
     
     var_brand_answ <- var_ListChoose1('answ_brand')
-    observeEvent(input$bl_answ_upload,{
+    #3.2上传------
+    observeEvent(input$nsbl_answ_upload,{
       #处理数据
       
       #处理日期
@@ -233,8 +235,8 @@
       res <- readExcelDf(kw_filter())
       return(res);
     })
-    
-    observeEvent(input$bl_kw_preview,{
+    #4.1 预览--------
+    observeEvent(input$nsbl_keyword_preview,{
       run_dataTable2('bl_kw_data_show',data = data_kw())
     })
     
@@ -242,7 +244,8 @@
     
     
     var_brand_kw <- var_ListChoose1('kw_brand')
-    observeEvent(input$bl_kw_upload,{
+    #4.2上传-----
+    observeEvent(input$nsbl_keyword_upload,{
       #处理数据
       
       #处理日期

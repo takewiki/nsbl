@@ -15,8 +15,8 @@ menu_series<- tabItem(tabName = "series",
                                ),
                                box(
                                  title = "操作区域", width = NULL, solidHeader = TRUE, status = "primary",
-                                 actionButton('bl_kw_preview','预览内容'),
-                                 actionButton('bl_kw_upload','上传服务器')
+                                 actionButton('nsbl_keyword_preview','预览内容'),
+                                 actionButton('nsbl_keyword_upload','上传服务器')
                                )
                         ),
                         
