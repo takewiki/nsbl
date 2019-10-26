@@ -1,12 +1,11 @@
 # 设置app标题-----
 
-app_title <-'网商黑名单系统V1.0';
+app_title <-'网商黑名单系统V5';
 
-conn_nsim <-sql_conn_common(db_name = 'nsim');
-brand_info <- sql_select(conn_nsim,'select FNumber,FName from brand
-                              order by FId asc');
-brand_number <- brand_info$FNumber;
-brand_name <- brand_info$FName;
+conn_nsim <-tsda::conn_nsim();
+conn <-tsda::conn_nsim();
+brand_number <- nsim_brand_FNumber()
+brand_name <- nsim_brand_FName()
 
 
 # 设置3条消息框------

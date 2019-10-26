@@ -1,6 +1,7 @@
 ## global.R ##
 # 加载R包-----
 enableBookmarking(store = "url")
+library(nsblpkg)
 library(shiny);
 library(shinydashboard);
 library(tsda);
